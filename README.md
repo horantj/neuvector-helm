@@ -9,11 +9,11 @@ A collection of Helm charts for deploying NeuVector product in Kubernetes and Op
 This repository contains three Helm charts. We publish these releases on GitHub. See our [releases page](https://github.com/neuvector/neuvector-helm/releases).
 Chart | Description | Release Version |
 ----- | ----------- | ---------------
-core | Deploy NeuVector container security core services.| [chart](tree/5.0.0/charts/core)
-crd | Deploy CRD services before installing NeuVector container security platform.| [chart](tree/5.0.0/charts/crd)
-monitor | Deploy monitoring services, such as Prometheus exporter.| [chart](tree/5.0.0/charts/monitor)
+core | Deploy NeuVector container security core services.| [chart](https://github.com/neuvector/neuvector-helm/tree/5.0.0/charts/core)
+crd | Deploy CRD services before installing NeuVector container security platform.| [chart](https://github.com/neuvector/neuvector-helm/tree/5.0.0/charts/crd)
+monitor | Deploy monitoring services, such as Prometheus exporter.| [chart](https://github.com/neuvector/neuvector-helm/tree/5.0.0/charts/monitor)
 
-**IMPORTANT** - Each chart has a set of configuration values, especially for the 'core' chart. Review the Helm chart configuration values [here](tree/5.0.0/charts/core) and make any required changes to the values.yaml file for your deployment. Pay special attention to the container runtime values, as the defaults may change as containerd becomes more prevalent.
+**IMPORTANT** - Each chart has a set of configuration values, especially for the 'core' chart. Review the Helm chart configuration values [here](https://github.com/neuvector/neuvector-helm/tree/5.0.0/charts/core) and make any required changes to the values.yaml file for your deployment. Pay special attention to the container runtime values, as the defaults may change as containerd becomes more prevalent.
 
 ### Adding chart repo
 
