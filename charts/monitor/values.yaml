@@ -4,15 +4,24 @@
 
 serviceAccount: default
 
-registry: registry.neuvector.com
+registry: docker.io
 oem:
 
 exporter:
   # If false, exporter will not be installed
-  enabled: false
+  enabled: true
+  service:
+    enabled: false
+    type: ClusterIP
   image:
     repository: neuvector/prometheus-exporter
     tag: latest
-  # changes this to a readonly user !
-  CTRL_USERNAME: admin
-  CTRL_PASSWORD: admin
+  # ensure you create a readonly user within NV!
+  CTRL_USERNAME: readonly
+  CTRL_PASSWORD: readonly
+
+grafana_dashboard:
+  enabled: false
+
+servicemonitor:
+  enabled: false

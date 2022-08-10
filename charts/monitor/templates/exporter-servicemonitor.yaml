@@ -1,0 +1,23 @@
+{{- if .Values.servicemonitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: neuvector-prometheus-exporter
+    component: neuvector-prometheus-exporter
+    provider: kubernetes
+    release: {{ .Release.Name }}
+  name: neuvector-prometheus-exporter
+  namespace: {{ .Release.Namespace }}
+spec:
+  endpoints:
+  - port: http-metrics
+  jobLabel: neuvector-prometheus-exporter
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      release: {{ .Release.Name }}
+      app: neuvector-prometheus-exporter-pod
+{{- end }}

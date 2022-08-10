@@ -1,0 +1,27 @@
+{{- if .Values.exporter.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: neuvector-prometheus-exporter
+  namespace: {{ .Release.Namespace }}
+{{- with .Values.exporter.service.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+  labels:
+    chart: {{ template "neuvector.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    app: neuvector-prometheus-exporter-pod
+spec:
+  type: {{ .Values.exporter.service.type }}
+{{- if and .Values.exporter.service.loadBalancerIP (eq .Values.exporter.service.type "LoadBalancer") }}
+  loadBalancerIP: {{ .Values.exporter.service.loadBalancerIP }}
+{{- end }}
+  ports:
+    - port: 8068
+      name: http-metrics
+      protocol: TCP
+  selector:
+    app: neuvector-prometheus-exporter-pod
+{{- end }}
